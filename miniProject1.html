@@ -13,10 +13,10 @@
                 Yearpublished: 2023,
                 readStatus: 0,
                 getSummary: function(){
-                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                        alert("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
                     },
                 toggleReadStatus: function(){
-                        console.log("This Book Reading Status is "+this.readStatus+".");
+                        alert("This Book Reading Status is "+this.readStatus+".");
                     }
             },
             {
@@ -25,10 +25,10 @@
                 Yearpublished: 1956,
                 readStatus: 34,
                 getSummary: function(){
-                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                        alert("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
                     },
                 toggleReadStatus: function(){
-                        console.log("This Book Reading Status is "+this.readStatus+".");
+                        alert("This Book Reading Status is "+this.readStatus+".");
                     }
             },
             {
@@ -37,14 +37,14 @@
                 Yearpublished: 2003,
                 readStatus: 7,
                 getSummary: function(){
-                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                        alert("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
                     },
                 toggleReadStatus: function(){
-                        console.log("This Book Reading Status is "+this.readStatus+".");
+                        alert("This Book Reading Status is "+this.readStatus+".");
                     }
             }
         ];
-        console.log(book);
+        alert(JSON.stringify(book));
         let library=[];
         function addbookback(add){
             library.push(add);
@@ -87,6 +87,7 @@
                 return t;
             },0 );
             alert("Count of book published after 2000: "+yb);
+            alert("Count of book published before 2000: "+(book.length-yb));
         }
         function removebook(bookremove){
             for(let i=0;i<library.length;i++){
