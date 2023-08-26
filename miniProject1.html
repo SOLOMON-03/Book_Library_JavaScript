@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+</head>
+<body>
+    <script>
+        let book=[{
+                Title: "Tom Lake",
+                Author: "Ann Patchett",
+                Yearpublished: 2023,
+                readStatus: 0,
+                getSummary: function(){
+                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                    },
+                toggleReadStatus: function(){
+                        console.log("This Book Reading Status is "+this.readStatus+".");
+                    }
+            },
+            {
+                Title: "Art of Loving",
+                Author: "Erich Fromm",
+                Yearpublished: 1956,
+                readStatus: 34,
+                getSummary: function(){
+                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                    },
+                toggleReadStatus: function(){
+                        console.log("This Book Reading Status is "+this.readStatus+".");
+                    }
+            },
+            {
+                Title: "Harry Potter and the Order of the Phoenix",
+                Author: "J. K. Rowling",
+                Yearpublished: 2003,
+                readStatus: 7,
+                getSummary: function(){
+                        console.log("The Book of "+this.Title+" was written by "+this.Author+" and Published in "+this.Yearpublished+".");
+                    },
+                toggleReadStatus: function(){
+                        console.log("This Book Reading Status is "+this.readStatus+".");
+                    }
+            }
+        ];
+        console.log(book);
+        let library=[];
+        function addbookback(add){
+            library.push(add);
+        }
+        function removelastbook(){
+            library.pop();
+        }
+        function addbookfront(add){
+            library.unshift(add);
+        }
+        function removefirstbook(){
+            library.shift();
+        }
+        addbookback(book[0].Title);
+        addbookfront(book[1].Title);
+        addbookfront(book[2].Title);
+        addbookback("Beloved");
+        addbookfront("Things Fall Apart");
+        alert("Library all books are inserted: "+library);
+        removefirstbook();
+        alert("Library after removing first Book: "+library);
+        removelastbook();
+        alert("Library after removing last Book: "+library);
+       function getTitles(){
+            let tbk = book.map(r=> r.Title);
+            alert("Titles: "+tbk);
+        }
+        function authorname(autdetails){
+            let abk = book.filter(a=>(a.Title==autdetails));
+            let ab = abk.map(au=>au.Author);
+            alert("Author Name: "+ab);
+        }
+        
+        function yearofbook(){
+            let ybk = book.filter(y=>y.Yearpublished>2000);
+            let yb = ybk.reduce((t,n)=> {
+                if(ybk.length != 0){
+                    t++;
+                }
+                return t;
+            },0 );
+            alert("Count of book published after 2000: "+yb);
+        }
+        function removebook(bookremove){
+            for(let i=0;i<library.length;i++){
+                if(library[i] === bookremove){
+                    library.splice(i,1);
+                }
+            }
+            alert("Removing the Specific Book : "+library);
+        }
+        function getreadStatus(){
+            let rsbk = book.filter(urr=>urr.readStatus>0);
+            let rsbk1 = book.filter(urr1=>urr1.readStatus==0);
+            let rsb=rsbk.map(u=>u= u.Title+" is Read!");
+            let rsb1=rsbk1.map(u1=>u1=u1.Title+" is Un Read!");
+            let rsk = rsb.concat(rsb1);
+            alert("ReadingStatus: "+rsk);
+        }
+        function sublib(i){
+            alert("Checking the Library Book: "+library);
+            const x=library.slice(0,i);
+            alert("After storing in subLibrary: "+x);
+        }
+        for(let i=0;i<book.length;i++){
+            book[i].getSummary();
+            book[i].toggleReadStatus();
+        }
+        getTitles();
+        authorname(book[2].Title);
+        
+        yearofbook();
+        removebook(book[1].Title);
+        getreadStatus();
+        sublib(3);
+    </script>
+</body>
+</html>
